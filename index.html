@@ -16,11 +16,45 @@
     <title>Weather Dashboard</title>
   </head>
   <body>
+    <header class="container d-flex justify-content-center">
+      <h1>Weather Dashboard</h1>
+    </header>
+
+    <aside class="container-fluid">
+      <div class="row justify-content-start">
+        <div class="col-12 col-md-3">
+          <h2>Search for a City:</h2>
+          <br>
+          <form id="city-form">
+            <div class="form-group row">
+              <input
+              type="text"
+              placeholder="Search"
+              class="form-control mb-2"
+              id="city-name"
+              />
+              <button type="submit" value="Submit" id="search-btn" class="btn btn-info">
+                Search
+              </button>
+            </div>
+          </form>
+          
+        </div>
+      </div>
+    </aside>
+
+    <main></main>
+
     <script
       src="https://code.jquery.com/jquery-3.6.1.min.js"
       integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous">
+    </script>
+    <!-- jQuery UI <script> tag -->
+    <script 
+    src="https://code.jquery.com/ui/1.13.1/jquery-ui.js" integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY=" 
+    crossorigin="anonymous">
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
   </body>
