@@ -1,0 +1,17 @@
+/* Style Variables */
+:root {
+    /* theme from https://www.color-hex.com/color-palette/98179 dark theme */
+    --white: #fff;
+    --blue: #007acc;
+    --gray-1: #c0c0c0;
+    --gray-2: #3e3e42;
+    --gray-3: #2d2d30;
+    --black-1: #252526;
+    --black-2: #1e1e1e;
+    --box-shadow: 0 1px 4px 0px rgb(0 0 0 / 20%);
+}
+
+/* Font established for rem units */
+html {
+    font-size: 16px;
+}
