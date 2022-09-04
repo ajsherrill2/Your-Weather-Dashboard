@@ -91,7 +91,7 @@ p {
 }
 
 .card {
-    margin: 20px;
+    margin: 0 0 20px 0;
     border-radius: var(--border-radius);
     background-color: var(--white);
 }
@@ -117,8 +117,20 @@ p {
     border-radius: var(--border-radius);
 }
 
+.subtitle {
+    color: var(--black-1);
+}
+
 .text-uppercase {
     text-transform: uppercase;
 }
 
+.flex-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.justify-space-between {
+    justify-content: space-between;
+}
 
