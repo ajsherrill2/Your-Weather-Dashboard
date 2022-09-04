@@ -12,34 +12,35 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.2/css/fontawesome.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap"
+    />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Weather Dashboard</title>
   </head>
+
   <body>
-    <header class="container d-flex justify-content-center">
-      <h1>Weather Dashboard</h1>
+    <header class="hero justify-content-center">
+      <h1 class="app-title">Weather Dashboard</h1>
     </header>
 
-    <aside class="container-fluid">
-      <div class="row justify-content-start m-3">
-        <div class="col-12 col-md-3">
-          <h2>Search for a City:</h2>
-          <br>
-          <form id="city-form">
-            <div class="form-group row">
-              <input
-              type="text"
-              placeholder="Search"
-              class="form-control mb-2"
-              id="city-name"
-              />
-              <button type="submit" value="Submit" id="search-btn" class="btn btn-info">
-                Search
-              </button>
-            </div>
+    <aside class="flex-row justify-space-between">
+      <div class="col-12 col-md-4">
+        
+        <div class="card">
+          <h2 class="card-header text-uppercase">Search for a City:</h2>
+          <form id="city-form" class="card-body">
+              <input name="city" id="city" type="text" placeholder="City Name" autofocus="true" class="form-input" />
+              <button type="submit" class="btn">Search</button>
           </form>
-          
         </div>
+
+        <div class="card"> 
+          <h3 class="card-header text-uppercase">Recent Searches</h3>
+          <div class="card-body"></div>
+        </div>
+
       </div>
     </aside>
 
