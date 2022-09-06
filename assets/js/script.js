@@ -32,9 +32,7 @@ function formSubmitHandler() {
                 localStorage.setItem(cityName, latLon);
 
                 apiUrl = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=073e596cca8ed71b557304d86f8bfbdc";
-                console.log(apiUrl);
-
-
+                
                 fetch(apiUrl).then(function (newResponse) {
                     if (newResponse.ok) {
                         newResponse.json().then(function (newData) {
@@ -42,6 +40,17 @@ function formSubmitHandler() {
                         })
                     }
                 })
+                
+                uvApiUrl = "https://api.openweathermap.org/data/3.0/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=073e596cca8ed71b557304d86f8bfbdc";
+
+                fetch(uvApiUrl).then(function (uvResponse) {
+                    if (uvResponse.ok) {
+                        uvResponse.json().then(function () {
+                            $("#uv-index")[0].textContent = "  " + data.current.uvi;;
+                        })
+                    }
+                })
+                
             })
         } else {
             alert('Could not find city!');
@@ -64,11 +73,11 @@ function getRecentSearch(coordinates) {
 function getCurrentWeather(data) {
     $(resultsPanel).addClass('visible')
 
-    // $("#current-icon")[0].src = "http://openweathermap.org/img/wn/" + data.current.weather[0].icon + "@2x.png";
-    $("#temp")[0].textContent = "Temperature: " + data.current.temp.toFixed(1) + " \u2109";
-    $("#humidity")[0].textContent = "Humidity: " + data.current.humidity + "% ";
-    $("#wind-speed")[0].textContent = "Wind Speed: " + data.current.wind_speed.toFixed(1) + " MPH";
-    // $("#uv-index")[0].textContent = "  " + data.current.uvi;
+    $("#current-icon")[0].src = "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png";
+    $("#temp")[0].textContent = "Temperature: " + data.main.temp.toFixed(1) + " \u2109";
+    $("#humidity")[0].textContent = "Humidity: " + data.main.humidity + "% ";
+    $("#wind-speed")[0].textContent = "Wind Speed: " + data.wind.speed.toFixed(1) + " MPH";
+    
 
     getCityForcast();
 }

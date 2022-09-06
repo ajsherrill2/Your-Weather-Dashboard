@@ -132,6 +132,14 @@ p {
     font-size: 1.6rem;
 }
 
+#name-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 2.5%;
+}
+
 .forcast h5 {
     color: var(--black-1);
     margin-bottom: 10px;
