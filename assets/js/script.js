@@ -46,10 +46,32 @@ function formSubmitHandler() {
     })
 }
 
+function getRecentSearch(coordinates) {
+    apiUrl = "https://api.openweathermap.org/data/2.5/weather?lat=" + coordinates[0] + "&lon=" + coordinates[1] + "&units=imperial&appid=073e596cca8ed71b557304d86f8bfbdc";
+
+    fetch(apiUrl).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (data) {
+                getCurrentWeather();
+            })
+        }
+    })
+}
+
 $('#city-form').on('submit', function (e) {
     e.preventDefault();
 
     formSubmitHandler();
 
     $("form")[0].reset();
+})
+
+$('.city-list-box').on('click', 'recents-btn', function () {
+    var coordinates = (localStorage.getItem($(this)[0].textContent)).split(' ');
+    coordinates[0] = parseFloat(coordinates[0]);
+    coordinates[1] = parseFloat(coordinates[1]);
+
+    $('city-name').textContent = cityName + " (" + moment().format('M/D/YYYY') + ")";
+
+    getRecentSearch(coordinates);
 })
