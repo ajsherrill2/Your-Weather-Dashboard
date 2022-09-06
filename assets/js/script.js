@@ -19,7 +19,7 @@ function formSubmitHandler() {
                     $(document.createElement('button')).prop({
                         type: 'button',
                         innerHTML: cityName,
-                        class: 'list-group-item list-group-item-light list-group-item-action',
+                        class: 'list-group-item list-group-item-light list-group-item-action recents-btn',
                     })
                 );
 
@@ -31,7 +31,6 @@ function formSubmitHandler() {
                 localStorage.setItem(cityName, latLon);
 
                 apiUrl = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=073e596cca8ed71b557304d86f8bfbdc";
-                console.log(apiUrl);
 
                 fetch(apiUrl).then(function (newResponse) {
                     if (newResponse.ok) {
