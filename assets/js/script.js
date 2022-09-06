@@ -13,7 +13,8 @@ function formSubmitHandler() {
     fetch(apiUrl).then(function (response) {
         if (response.ok) {
             response.json().then(function (data) {
-                $('city-name').textContent = cityName + " (" + moment().format('M/D/YYYY') + ")";
+                
+                $('#city-name')[0].textContent = cityName + " (" + moment().format('M/D/YYYY') + ")";
                 
                 $(recentSearchesList).append(
                     $(document.createElement('button')).prop({
@@ -31,6 +32,8 @@ function formSubmitHandler() {
                 localStorage.setItem(cityName, latLon);
 
                 apiUrl = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=073e596cca8ed71b557304d86f8bfbdc";
+                console.log(apiUrl);
+
 
                 fetch(apiUrl).then(function (newResponse) {
                     if (newResponse.ok) {
@@ -58,6 +61,18 @@ function getRecentSearch(coordinates) {
     })
 }
 
+function getCurrentWeather(data) {
+    $(resultsPanel).addClass('visible')
+
+    // $("#current-icon")[0].src = "http://openweathermap.org/img/wn/" + data.current.weather[0].icon + "@2x.png";
+    $("#temp")[0].textContent = "Temperature: " + data.current.temp.toFixed(1) + " \u2109";
+    $("#humidity")[0].textContent = "Humidity: " + data.current.humidity + "% ";
+    $("#wind-speed")[0].textContent = "Wind Speed: " + data.current.wind_speed.toFixed(1) + " MPH";
+    // $("#uv-index")[0].textContent = "  " + data.current.uvi;
+
+    getCityForcast();
+}
+
 $('#city-form').on('submit', function (e) {
     e.preventDefault();
 
@@ -71,7 +86,7 @@ $('.city-list-box').on('click', 'recents-btn', function () {
     coordinates[0] = parseFloat(coordinates[0]);
     coordinates[1] = parseFloat(coordinates[1]);
 
-    $('city-name').textContent = cityName + " (" + moment().format('M/D/YYYY') + ")";
+    $('#city-name')[0].textContent = $(this).textContent + " (" + moment().format('M/D/YYYY') + ")";
 
     getRecentSearch(coordinates);
 })

@@ -132,7 +132,7 @@ p {
     font-size: 1.6rem;
 }
 
-.forcast h4 {
+.forcast h5 {
     color: var(--black-1);
     margin-bottom: 10px;
 }
