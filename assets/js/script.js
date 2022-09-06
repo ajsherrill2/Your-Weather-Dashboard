@@ -19,7 +19,7 @@ function formSubmitHandler() {
                     $(document.createElement('button')).prop({
                         type: 'button',
                         innerHTML: cityName,
-                        class: '',
+                        class: 'list-group-item list-group-item-light list-group-item-action',
                     })
                 );
 
