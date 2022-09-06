@@ -57,6 +57,17 @@ function getCurrentWeather(data, uvData) {
     $("#wind-speed")[0].textContent = "Wind Speed: " + data.wind.speed.toFixed(1) + " MPH";
     $("#uv-index")[0].textContent = "  " + uvData.value;
 
+    if (uvData.value < 3) {
+        $("#uv-index").removeClass("moderate severe");
+        $("#uv-index").addClass("favorable");
+    } else if (data.current.uvi < 6) {
+        $("#uv-index").removeClass("favorable severe");
+        $("#uv-index").addClass("moderate");
+    } else {
+        $("#uv-index").removeClass("favorable moderate");
+        $("#uv-index").addClass("severe");
+    }
+
     getFiveDayForcast(); 
 }
 
