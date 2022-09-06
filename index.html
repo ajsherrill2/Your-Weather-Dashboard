@@ -26,27 +26,120 @@
     </header>
 
     <main class="flex-row justify-space-between">
-      <div class="col-12 col-md-4">
+      <section class="col-12 col-md-4">
         
         <div class="card">
           <h2 class="card-header text-uppercase">Search for a City:</h2>
           <form id="city-form" class="card-body">
-              <input name="city" id="city" type="text" placeholder="City" autofocus="true" class="form-input" />
+              <input id="city" type="text" placeholder="City" class="form-input" />
               <button type="submit" class="btn">Search</button>
           </form>
         </div>
 
         <div class="card"> 
           <h3 class="card-header text-uppercase">Recent Searches</h3>
-          <div class="card-body" id="recent-searches"></div>
+          <div class="card-body">
+            <ul class="list-group" id="recent-searches"></ul>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div class="col-12 col-md-6">
-        <h2 class="subtitle">Weather Forcast for:<span id="city-search"></span></h2>
-        <!-- There needs to be an empty HTML element for us to write weather data to. -->
-        <div id="forcast-container" class="list-group"></div>
-      </div>
+      <section class="col-12 col-md-7 results">
+        <div class="current-conditions card">
+          <div class="name-block">
+            <h2 class="card-header text-uppercase" id="city-name"></h2>
+            <img src="" alt="" id="current-icon">
+          </div>
+          <div class="card-body">
+            <div>
+              <p class="current-info" id="temp">Temperature: </p>
+            </div>
+            <div>
+              <p class="current-info" id="humidity">Humidity: </p>
+            </div>
+            <div>
+              <p class="current-info" id="wind-speed">Wind Speed: </p>
+            </div>
+            <div class="uv-index-block">
+              <p>UV Index: </p>
+              <p class="rounded current-info" id="uv-index"></p>
+            </div>  
+          </div>
+        </div>
+
+        <div class="forcast">
+          <h4>5-Day Forcast:</h4>
+          <div class="container">
+            <div class="row">
+              <!-- Day 1 -->
+              <div class="col">
+                <div class="card">
+                  <div class="card-header">
+                    <h5 id="day-0"></h5>
+                  </div>
+                  <div class="card-body">
+                    <img src="" alt="" id="img-0">
+                    <p class="caard-text" id="temp-0"></p>
+                    <p class="caard-text" id="hum-0"></p>
+                  </div>
+                </div>
+              </div>
+              <!-- Day 2 -->
+              <div class="col">
+                <div class="card">
+                  <div class="card-header">
+                    <h5 id="day-1"></h5>
+                  </div>
+                  <div class="card-body">
+                    <img src="" alt="" id="img-1">
+                    <p class="caard-text" id="temp-1"></p>
+                    <p class="caard-text" id="hum-1"></p>
+                  </div>
+                </div>
+              </div>
+              <!-- Day 3 -->
+              <div class="col">
+                <div class="card">
+                  <div class="card-header">
+                    <h5 id="day-2"></h5>
+                  </div>
+                  <div class="card-body">
+                    <img src="" alt="" id="img-2">
+                    <p class="caard-text" id="temp-2"></p>
+                    <p class="caard-text" id="hum-2"></p>
+                  </div>
+                </div>
+              </div>
+              <!-- Day 4 -->
+              <div class="col">
+                <div class="card">
+                  <div class="card-header">
+                    <h5 id="day-3"></h5>
+                  </div>
+                  <div class="card-body">
+                    <img src="" alt="" id="img-3">
+                    <p class="caard-text" id="temp-3"></p>
+                    <p class="caard-text" id="hum-3"></p>
+                  </div>
+                </div>
+              </div>
+              <!-- Day 5 -->
+              <div class="col">
+                <div class="card">
+                  <div class="card-header">
+                    <h5 id="day-4"></h5>
+                  </div>
+                  <div class="card-body">
+                    <img src="" alt="" id="img-4">
+                    <p class="caard-text" id="temp-4"></p>
+                    <p class="caard-text" id="hum-4"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <script

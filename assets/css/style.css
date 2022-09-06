@@ -117,9 +117,20 @@ p {
     border-radius: var(--border-radius);
 }
 
-.subtitle {
+.current-conditions p {
     color: var(--black-1);
+    font-size: 1.6rem;
 }
+
+.forcast h4 {
+    color: var(--black-1);
+    margin-bottom: 10px;
+}
+
+.results {
+    visibility: hidden;
+}
+
 
 .text-uppercase {
     text-transform: uppercase;
