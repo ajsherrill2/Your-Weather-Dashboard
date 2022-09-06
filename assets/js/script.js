@@ -14,7 +14,14 @@ function formSubmitHandler() {
         if (response.ok) {
             response.json().then(function (data) {
                 $('city-name').textContent = cityName + " (" + moment().format('M/D/YYYY') + ")";
-                recentSearchesList.append('<button type="button">' + cityName);
+                
+                $(recentSearchesList).append(
+                    $(document.createElement('button')).prop({
+                        type: 'button',
+                        innerHTML: cityName,
+                        class: '',
+                    })
+                );
 
                 const lat = data.coord.lat;
                 const lon = data.coord.lon;
@@ -39,3 +46,11 @@ function formSubmitHandler() {
         }
     })
 }
+
+$('#city-form').on('submit', function (e) {
+    e.preventDefault();
+
+    formSubmitHandler();
+
+    $("form")[0].reset();
+})
