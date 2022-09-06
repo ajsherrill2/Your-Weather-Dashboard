@@ -60,7 +60,7 @@ function getCurrentWeather(data, uvData) {
     if (uvData.value < 3) {
         $("#uv-index").removeClass("moderate severe");
         $("#uv-index").addClass("favorable");
-    } else if (data.current.uvi < 6) {
+    } else if (uvData.value < 6) {
         $("#uv-index").removeClass("favorable severe");
         $("#uv-index").addClass("moderate");
     } else {

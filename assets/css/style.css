@@ -163,3 +163,21 @@ p {
     justify-content: space-between;
 }
 
+.favorable {
+    background-color: #00A86B;
+    padding: 2px;
+    color: var(--white);
+}
+
+.moderate {
+    background-color: #FFF36D;
+    padding: 2px;
+    color: var(--white);
+}
+
+.severe {
+    background-color: #F4364C;
+    padding: 2px;
+    color: var(--white);
+}
+
