@@ -43,26 +43,26 @@ function formSubmitHandler() {
                     }
                 })
 
-                forcastUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=073e596cca8ed71b557304d86f8bfbdc'
+                forcastUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&units=imperial&appid=073e596cca8ed71b557304d86f8bfbdc'
 
                 fetch(forcastUrl).then(function (forcastResponse) {
-                    console.log(forcastUrl);
                     if (forcastResponse.ok) {
                         forcastResponse.json().then(function (data) {
-                            for (let i = 0; i < data.list.length; i++) {
-                                // console.log(data.list);
-                                // if (i < 5) {
-                                    
-                                // }
+                            for (let i = 0; i < 5; i++) {
+                                $('.day')[i].textContent = data.list[i].dt;
+                                $('.img')[i].src = "http://openweathermap.org/img/wn/" + data.list[i].weather[0].icon + "@2x.png";
+                                $('.temp')[i].textContent = data.list[i].main.temp;
+                                $('.hum')[i].textContent = data.list[i].main.humidity;
                             }
-                        })
+                        });
                     }
-                })
+                });
+
             })
         } else {
             alert('Could not find city!');
         }
-    })
+    });
 }
 
 function getCurrentWeather(data, uvData) {
