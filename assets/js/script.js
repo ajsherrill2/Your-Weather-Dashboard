@@ -3,6 +3,8 @@ var recentSearchesList = document.querySelector('#recent-searches');
 var cityInputEl = document.querySelector('#city');
 var forcastContainerEl = document.querySelector('#city-container');
 var resultsPanel = document.querySelector('.results');
+var weatherForcastEl = document.getElementById('weather-forcast');
+
 
 localStorage.clear();
 
@@ -28,7 +30,7 @@ function formSubmitHandler() {
                 const lon = data.coord.lon;
 
                 var latLon = lat.toString() + " " + lon.toString();
-
+        
                 localStorage.setItem(cityName, latLon);
                 
                 let uvApiUrl = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=073e596cca8ed71b557304d86f8bfbdc";
@@ -40,7 +42,22 @@ function formSubmitHandler() {
                         })
                     }
                 })
-                
+
+                forcastUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=073e596cca8ed71b557304d86f8bfbdc'
+
+                fetch(forcastUrl).then(function (forcastResponse) {
+                    console.log(forcastUrl);
+                    if (forcastResponse.ok) {
+                        forcastResponse.json().then(function (data) {
+                            for (let i = 0; i < data.list.length; i++) {
+                                // console.log(data.list);
+                                // if (i < 5) {
+                                    
+                                // }
+                            }
+                        })
+                    }
+                })
             })
         } else {
             alert('Could not find city!');
@@ -67,11 +84,11 @@ function getCurrentWeather(data, uvData) {
         $("#uv-index").removeClass("favorable moderate");
         $("#uv-index").addClass("severe");
     }
-
-    getFiveDayForcast(); 
 }
 
-function getFiveDayForcast() {}
+function getFiveDayForcast(forcastData) {
+
+}
 
 $('#city-form').on('submit', function (e) {
     e.preventDefault();
@@ -79,4 +96,9 @@ $('#city-form').on('submit', function (e) {
     formSubmitHandler();
 
     $("form")[0].reset();
+})
+
+$('.city-list-box').on('click', '.recents-btn', function() {
+
+    formSubmitHandler()
 })
