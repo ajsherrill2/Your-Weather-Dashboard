@@ -1,15 +1,15 @@
+// Main variables
+let cityFormEl = $('#city-form');
 let cityInputEl = $('#city');
 let searchedCity = $('#city-name');
-var recentSearchesList = document.querySelector('#recent-searches');
-var forcastContainerEl = document.querySelector('#city-container');
-var resultsPanel = document.querySelector('.results');
-var weatherForcastEl = document.getElementById('weather-forcast');
+let resultsPanel = $('.results')
+let recentSearchesList = $('#recent-searches');
 
 
-// 
+// Clears all Local Storage on page load
 localStorage.clear();
 
-// 
+// Searches input in Open Weather Map 2.5 APi and prints specific weather data
 function formSubmitHandler() {
     var cityName = $(cityInputEl)[0].value.trim();
 
@@ -62,7 +62,7 @@ function formSubmitHandler() {
     });
 }
 
-// 
+// Gets the current weather for present day and adds text content to results
 function getCurrentWeather(data, uvData) {
     $(resultsPanel).addClass('visible')
 
@@ -84,7 +84,7 @@ function getCurrentWeather(data, uvData) {
     }
 }
 
-// 
+// Gets data from Open Weather Map Five-day Forcast and shows results
 function getFiveDayForcast(data) {
     for ( let i = 0; i < 5; i++) {
         $('.day')[i].textContent = moment(data.list[i*8].dt*1000).format('dddd M/D');
@@ -95,7 +95,8 @@ function getFiveDayForcast(data) {
     }
 }
 
-$('#city-form').on('submit', function (e) {
+// Event listener for the form search button
+$(cityFormEl).on('submit', function (e) {
     e.preventDefault();
 
     formSubmitHandler();
@@ -103,6 +104,8 @@ $('#city-form').on('submit', function (e) {
     $("form")[0].reset();
 })
 
+// TO DO:
+// Event listener for recently searched city buttons
 $('.city-list-box').on('click', '.recents-btn', function() {
 
     formSubmitHandler()
