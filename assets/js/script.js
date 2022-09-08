@@ -5,15 +5,12 @@ let searchedCity = $('#city-name');
 let resultsPanel = $('.results')
 let recentSearchesList = $('#recent-searches');
 
-
-// Clears all Local Storage on page load
-localStorage.clear();
-
 // Searches input in Open Weather Map 2.5 APi and prints specific weather data
-function formSubmitHandler(cityName) {
-    var cityName = $(cityInputEl)[0].value.trim();
+function formSubmitHandler(results) {
+    var cityName = $(cityInputEl)[0].value.trim() || results;
 
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=073e596cca8ed71b557304d86f8bfbdc";
+
     fetch(apiUrl).then(function (response) {
         if (response.ok) {
             response.json().then(function (data) {
@@ -30,10 +27,6 @@ function formSubmitHandler(cityName) {
 
                 const lat = data.coord.lat;
                 const lon = data.coord.lon;
-
-                var latLon = lat.toString() + " " + lon.toString();
-        
-                localStorage.setItem('city', cityName);
                 
                 let uvApiUrl = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=073e596cca8ed71b557304d86f8bfbdc";
 
@@ -108,7 +101,6 @@ $(cityFormEl).on('submit', function (e) {
 // Event listener for recently searched city buttons
 $(recentSearchesList).on('click', '.recents-btn', function(e) {
     var cityName = this.innerHTML;
-    console.log(cityName);
 
     formSubmitHandler(cityName);
 })
