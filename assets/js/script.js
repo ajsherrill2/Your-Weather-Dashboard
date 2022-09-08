@@ -1,28 +1,30 @@
-var cityFormEl = document.querySelector('#city-form');
+let cityInputEl = $('#city');
+let searchedCity = $('#city-name');
 var recentSearchesList = document.querySelector('#recent-searches');
-var cityInputEl = document.querySelector('#city');
 var forcastContainerEl = document.querySelector('#city-container');
 var resultsPanel = document.querySelector('.results');
 var weatherForcastEl = document.getElementById('weather-forcast');
 
 
+// 
 localStorage.clear();
 
+// 
 function formSubmitHandler() {
-    var cityName = $('#city')[0].value.trim();
+    var cityName = $(cityInputEl)[0].value.trim();
 
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=073e596cca8ed71b557304d86f8bfbdc";
     fetch(apiUrl).then(function (response) {
         if (response.ok) {
             response.json().then(function (data) {
                 
-                $('#city-name')[0].textContent = cityName + " (" + moment().format('M/D/YYYY') + ")";
+                $(searchedCity)[0].textContent = cityName + " (" + moment().format('M/D/YYYY') + ")";
                 
                 $(recentSearchesList).append(
                     $(document.createElement('button')).prop({
                         type: 'button',
                         innerHTML: cityName,
-                        class: 'list-group-item list-group-item-light list-group-item-action recents-btn',
+                        class: 'list-group-item recents-btn',
                     })
                 );
 
@@ -48,13 +50,7 @@ function formSubmitHandler() {
                 fetch(forcastUrl).then(function (forcastResponse) {
                     if (forcastResponse.ok) {
                         forcastResponse.json().then(function (data) {
-                            for ( let i = 0; i < 5; i++) {
-                                $('.day')[i].textContent = moment(data.list[i*8].dt*1000).format('dddd M/D');
-                                $('.img')[i].src = "http://openweathermap.org/img/wn/" + data.list[i*8].weather[0].icon + "@2x.png";
-                                $('.temp')[i].textContent = 'Temp: ' + data.list[i*8].main.temp.toFixed(1) + " \u2109";
-                                $('.wind')[i].textContent = 'Wind Speed: ' + data.list[i*8].wind.speed + ' MPH';
-                                $('.hum')[i].textContent = 'Humidity: ' + data.list[i*8].main.humidity + "% ";
-                            }
+                            getFiveDayForcast(data);
                         });
                     }
                 });
@@ -66,6 +62,7 @@ function formSubmitHandler() {
     });
 }
 
+// 
 function getCurrentWeather(data, uvData) {
     $(resultsPanel).addClass('visible')
 
@@ -87,8 +84,15 @@ function getCurrentWeather(data, uvData) {
     }
 }
 
-function getFiveDayForcast(forcastData) {
-
+// 
+function getFiveDayForcast(data) {
+    for ( let i = 0; i < 5; i++) {
+        $('.day')[i].textContent = moment(data.list[i*8].dt*1000).format('dddd M/D');
+        $('.img')[i].src = "http://openweathermap.org/img/wn/" + data.list[i*8].weather[0].icon + "@2x.png";
+        $('.temp')[i].textContent = 'Temp: ' + data.list[i*8].main.temp.toFixed(1) + " \u2109";
+        $('.wind')[i].textContent = 'Wind Speed: ' + data.list[i*8].wind.speed.toFixed(1) + ' MPH';
+        $('.hum')[i].textContent = 'Humidity: ' + data.list[i*8].main.humidity + "% ";
+    }
 }
 
 $('#city-form').on('submit', function (e) {

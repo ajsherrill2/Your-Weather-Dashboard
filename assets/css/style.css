@@ -123,6 +123,13 @@ p {
     text-align: center;
     font-size: 1.2rem;
     font-weight: 700;
+    color: var(--gray-3);
+    background-color: var(--light-gray);
+    transition: 0s;
+}
+
+.recents-btn:hover {
+    transition: 0.2s;
     color: var(--gray-1);
     background-color: var(--gray-2);
 }
