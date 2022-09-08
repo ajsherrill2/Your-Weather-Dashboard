@@ -49,10 +49,11 @@ function formSubmitHandler() {
                     if (forcastResponse.ok) {
                         forcastResponse.json().then(function (data) {
                             for (let i = 0; i < 5; i++) {
-                                $('.day')[i].textContent = data.list[i].dt;
+                                $('.day')[i].textContent = data.list[i].dt; //convert this to different format
                                 $('.img')[i].src = "http://openweathermap.org/img/wn/" + data.list[i].weather[0].icon + "@2x.png";
-                                $('.temp')[i].textContent = data.list[i].main.temp;
-                                $('.hum')[i].textContent = data.list[i].main.humidity;
+                                $('.temp')[i].textContent = 'Temp: ' + data.list[i].main.temp.toFixed(1) + " \u2109";
+                                $('.wind')[i].textContent = 'Wind Speed: ' + data.list[i].wind.speed + ' MPH';
+                                $('.hum')[i].textContent = 'Humidity: ' + data.list[i].main.humidity + "% ";
                             }
                         });
                     }
