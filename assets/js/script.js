@@ -48,12 +48,12 @@ function formSubmitHandler() {
                 fetch(forcastUrl).then(function (forcastResponse) {
                     if (forcastResponse.ok) {
                         forcastResponse.json().then(function (data) {
-                            for (let i = 0; i < 5; i++) {
-                                $('.day')[i].textContent = data.list[i].dt; //convert this to different format
-                                $('.img')[i].src = "http://openweathermap.org/img/wn/" + data.list[i].weather[0].icon + "@2x.png";
-                                $('.temp')[i].textContent = 'Temp: ' + data.list[i].main.temp.toFixed(1) + " \u2109";
-                                $('.wind')[i].textContent = 'Wind Speed: ' + data.list[i].wind.speed + ' MPH';
-                                $('.hum')[i].textContent = 'Humidity: ' + data.list[i].main.humidity + "% ";
+                            for ( let i = 0; i < 5; i++) {
+                                $('.day')[i].textContent = moment(data.list[i*8].dt*1000).format('dddd M/D');
+                                $('.img')[i].src = "http://openweathermap.org/img/wn/" + data.list[i*8].weather[0].icon + "@2x.png";
+                                $('.temp')[i].textContent = 'Temp: ' + data.list[i*8].main.temp.toFixed(1) + " \u2109";
+                                $('.wind')[i].textContent = 'Wind Speed: ' + data.list[i*8].wind.speed + ' MPH';
+                                $('.hum')[i].textContent = 'Humidity: ' + data.list[i*8].main.humidity + "% ";
                             }
                         });
                     }

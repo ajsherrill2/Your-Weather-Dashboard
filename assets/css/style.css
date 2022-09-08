@@ -145,6 +145,11 @@ p {
     margin-bottom: 10px;
 }
 
+.card-text {
+    color: var(--black-2);
+    font-weight: 700;
+}
+
 .results {
     visibility: hidden;
 }
