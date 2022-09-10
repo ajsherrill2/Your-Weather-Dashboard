@@ -17,13 +17,29 @@ function formSubmitHandler(results) {
                 
                 $(searchedCity)[0].textContent = cityName + " (" + moment().format('M/D/YYYY') + ")";
                 
-                $(recentSearchesList).append(
-                    $(document.createElement('button')).prop({
-                        type: 'button',
-                        innerHTML: cityName,
-                        class: 'list-group-item recents-btn',
-                    })
-                );
+                // This Adds a button once the city is searched but only if the button doesnt already exist
+                let recentCityBtn = document.getElementById(cityName);
+                if (recentCityBtn) {
+                    this.document.getElementById(cityName).remove();
+                    $(recentSearchesList).append(
+                        $(document.createElement('button')).prop({
+                            type: 'button',
+                            innerHTML: cityName,
+                            class: 'list-group-item recents-btn',
+                            id: cityName,
+                        })
+                    );
+                } else {
+                    $(recentSearchesList).append(
+                        $(document.createElement('button')).prop({
+                            type: 'button',
+                            innerHTML: cityName,
+                            class: 'list-group-item recents-btn',
+                            id: cityName,
+                        })
+                    );
+                }
+                
 
                 const lat = data.coord.lat;
                 const lon = data.coord.lon;
@@ -99,7 +115,7 @@ $(cityFormEl).on('submit', function (e) {
 
 // TO DO:
 // Event listener for recently searched city buttons
-$(recentSearchesList).on('click', '.recents-btn', function(e) {
+$(recentSearchesList).on('click', '.recents-btn', function() {
     var cityName = this.innerHTML;
 
     formSubmitHandler(cityName);

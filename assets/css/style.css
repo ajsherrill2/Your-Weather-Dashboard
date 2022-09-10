@@ -2,6 +2,7 @@
 :root {
     /* theme from https://www.color-hex.com/color-palette/98179 dark theme */
     --white: #fff;
+    --blue-gray: #5885AF;
     --blue: #007acc;
     --gray-1: #c0c0c0;
     --light-gray: #D3D3D3;
@@ -92,13 +93,14 @@ p {
 
 .card {
     margin: 0 0 20px 0;
+    border: none;
     border-radius: var(--border-radius);
     background-color: var(--white);
 }
 
 .card-header {
     color: var(--white);
-    background-color: var(--gray-2);
+    background-color: var(--blue-gray);
     padding: 2.5%;
     border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
 }
