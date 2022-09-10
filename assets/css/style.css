@@ -19,6 +19,7 @@ html {
     font-size: 16px;
 }
 
+/* Base styles */
 body {
     background: var(--light-gray);
     margin: 0;
@@ -50,6 +51,7 @@ p {
     font-size: 1.2rem;
 }
 
+/* Button styles */
 .btn {
     font-size: 1.3rem;
     font-family: 'Roboto', sans-serif;
@@ -71,6 +73,24 @@ p {
     background-color: var(--gray-2);
 }
 
+.recents-btn {
+    margin-bottom: 5px;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--gray-3);
+    background-color: var(--light-gray);
+    transition: 0s;
+}
+
+.recents-btn:hover {
+    transition: 0.2s;
+    color: var(--gray-1);
+    background-color: var(--gray-2);
+}
+
+/* Styles to the title */
 .hero {
     padding: 3% 4%;
     background-image: linear-gradient(to right, var(--gray-2), var(--gray-3));
@@ -91,6 +111,7 @@ p {
     max-width: 75%;
 }
 
+/* Card styles */
 .card {
     margin: 0 0 20px 0;
     border: none;
@@ -109,6 +130,12 @@ p {
     padding: 2.5%;
 }
 
+.card-text {
+    color: var(--black-2);
+    font-weight: 700;
+}
+
+/* Form styles */
 .form-input {
     display: block;
     width: 100%;
@@ -119,23 +146,7 @@ p {
     border-radius: var(--border-radius);
 }
 
-.recents-btn {
-    margin-bottom: 5px;
-    font-family: 'Roboto', sans-serif;
-    text-align: center;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--gray-3);
-    background-color: var(--light-gray);
-    transition: 0s;
-}
-
-.recents-btn:hover {
-    transition: 0.2s;
-    color: var(--gray-1);
-    background-color: var(--gray-2);
-}
-
+/* Current Conditions style */
 .current-conditions p {
     color: var(--black-1);
     font-size: 1.6rem;
@@ -149,25 +160,21 @@ p {
     padding: 0 2.5%;
 }
 
+.results {
+    visibility: hidden;
+}
+
+/* Five-day Forcast styles */
 .future-forcast h5 {
     color: var(--black-1);
     margin-bottom: 10px;
 }
 
-.card-text {
-    color: var(--black-2);
-    font-weight: 700;
-}
-
-.results {
-    visibility: hidden;
-}
-
-
 .text-uppercase {
     text-transform: uppercase;
 }
 
+/* Responsive Layout styles */
 .flex-row {
     display: flex;
     flex-wrap: wrap;
@@ -177,21 +184,25 @@ p {
     justify-content: space-between;
 }
 
+/* UV-Index styles */
 .favorable {
     background-color: #00A86B;
     padding: 2px;
-    color: var(--white);
+    color: var(--gray-3);
+    font-weight: 700;
 }
 
 .moderate {
     background-color: #FFF36D;
     padding: 2px;
-    color: var(--white);
+    color: var(--gray-3);
+    font-weight: 700;
 }
 
 .severe {
     background-color: #F4364C;
     padding: 2px;
-    color: var(--white);
+    color: var(--gray-3);
+    font-weight: 700;
 }
 
